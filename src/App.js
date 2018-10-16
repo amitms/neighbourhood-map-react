@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import FoursquaresAPI from './venues.js';
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const ApiKey = 'AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM';  //AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc
+    
+    const ApiKey = 'AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM';  //AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM, AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
     var index = window.document.getElementsByTagName("script")[0];
     var script = window.document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${ApiKey}&v=3`;
@@ -39,6 +41,7 @@ class App extends Component {
     }
   }
 
+
   render() {
     return (
       <div className="App">
@@ -47,6 +50,7 @@ class App extends Component {
         </header>
 
         <div id="map"></div>
+        <FoursquaresAPI venues/>
       </div>    
 
       )
