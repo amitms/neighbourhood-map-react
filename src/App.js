@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-//import FoursquaresAPI from './venues.js';
 import axios from 'axios';
 
 
@@ -20,7 +19,6 @@ class App extends Component {
     client_id: "1GQRBJDSOIGQZFBJKOWQIWX5OHUQHCQHXELYKW54MO5GHZHN",
     client_secret: "ZY33445JA0GQOP4KMBW5SYGXKQKTMMAOVUPOVRKHDEWLNEPC",
     query: "food",
-//    ll:  "39.2356323,-85.8651852",
     near: "Columbus IN",
     radius: 200,   
     v: "20182507"
@@ -40,7 +38,7 @@ class App extends Component {
       })    
 
 /*********** Google Map API ********************/    
-    const ApiKey = 'AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc';  //AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM, AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
+    const ApiKey = 'AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM';  //use AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM or AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
     var index = window.document.getElementsByTagName("script")[0];
     var script = window.document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${ApiKey}&v=3`;
