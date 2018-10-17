@@ -1,18 +1,46 @@
 import React, { Component } from 'react';
 import './App.css';
-import FoursquaresAPI from './venues.js';
+//import FoursquaresAPI from './venues.js';
+import axios from 'axios';
+
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    mapIsReady: false
+    mapIsReady: false,
+    venues: []
     };
   }
 
   componentDidMount() {
-    
-    const ApiKey = 'AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM';  //AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM, AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
+/*********** Foursquare API fetch for venues from axios ********************/    
+    const exploreQuery = "https://api.foursquare.com/v2/venues/explore?";
+    const parameters = {
+    client_id: "1GQRBJDSOIGQZFBJKOWQIWX5OHUQHCQHXELYKW54MO5GHZHN",
+    client_secret: "ZY33445JA0GQOP4KMBW5SYGXKQKTMMAOVUPOVRKHDEWLNEPC",
+    query: "food",
+//    ll:  "39.2356323,-85.8651852",
+    near: "Columbus IN",
+    radius: 200,   
+    v: "20182507"
+      }
+
+    axios.get(exploreQuery + new URLSearchParams(parameters))
+      .then(response => {
+        console.log(response)
+        this.setState({
+        venues: response.data.response.groups[0].items
+        })
+                console.log(this.state.venues)
+
+      })
+      .catch(error => {
+      console.log("ERROR!! " + error)
+      })    
+
+/*********** Google Map API ********************/    
+    const ApiKey = 'AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc';  //AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM, AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
     var index = window.document.getElementsByTagName("script")[0];
     var script = window.document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${ApiKey}&v=3`;
@@ -25,37 +53,50 @@ class App extends Component {
   }
 
   componentDidUpdate() {
-    const home = {lat: 39.2356323, lng: -85.8651852};
+    const home = {lat: 39.2029072, lng: -85.9235928};
 
     if (this.state.mapIsReady) {
       var map = new window.google.maps.Map(document.getElementById('map'), {
         center: home,          
-        zoom: 14,
+        zoom: 17,
         mapTypeId: 'roadmap'
       });
     // eslint-disable-next-line
-      const marker = new window.google.maps.Marker({
+      const markerHOme = new window.google.maps.Marker({
         position: home,
         map: map
       });
-    }
-  }
 
+/*********** Info Window for venues markers********************/   
+      var infowindow = new window.google.maps.InfoWindow()
+      this.state.venues.map(myVenue => {
+        var contentString = `${myVenue.venue.name}${myVenue.venue.location.address}`
+        var markerVenues = new window.google.maps.Marker({
+          position: {lat: myVenue.venue.location.lat , lng: myVenue.venue.location.lng},
+          map: map,
+          title: myVenue.venue.name 
+        })
+        markerVenues.addListener('click', function() {
+          infowindow.setContent(contentString)
+          infowindow.open(map, markerVenues)
+        })
+      })   
+    }
+/*********************************************************/    
+  }
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-            Neighbourhood Map - React -Udacity
+            Neighbourhood Map (Columbus, IN)- React -Udacity
         </header>
 
         <div id="map"></div>
-        <FoursquaresAPI venues/>
       </div>    
 
       )
   }
 }
-
 
 export default App;
