@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-
+import SideBar from "./SideBar.js";
 
 class App extends Component {
   constructor(props) {
@@ -87,7 +87,15 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-            Neighbourhood Map (Columbus, IN)- React -Udacity
+            <div>Neighbourhood Map (Columbus, IN)- React -Udacity</div>
+
+                   <SideBar
+
+                    >
+
+                    </SideBar>
+
+
         </header>
 
         <div id="map"></div>
