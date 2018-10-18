@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
 class SideBar extends Component {
-
     open = () => {
         const SideBar = document.querySelector('.SideBar');
         SideBar.style.display === 'none' ? SideBar.style.display = 'block' : SideBar.style.display = 'none';
@@ -20,17 +19,11 @@ class SideBar extends Component {
                 <div className="SideBar">
                     <div className="form" role="form">
                         <input type="text"
-                               aria-labelledby="filter" placeholder="Search..."
-                               className="input" role="search"
-                               onChange={this.search}/>
+                           aria-labelledby="filter" placeholder="Search..."
+                           className="input" role="search"
+                           onChange={this.search}/>
                     </div>
-                    <ul>
-                       <li> testloc1</li>
-                       <li> testloc2</li>
-                       <li> testloc3</li>
-                       <li> testloc4</li>
-
-                    </ul>                    
+                  
                 </div>
 
             </div>

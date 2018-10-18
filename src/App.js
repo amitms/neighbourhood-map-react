@@ -30,8 +30,6 @@ class App extends Component {
         this.setState({
         venues: response.data.response.groups[0].items
         })
-                console.log(this.state.venues)
-
       })
       .catch(error => {
       console.log("ERROR!! " + error)
@@ -60,7 +58,7 @@ class App extends Component {
         mapTypeId: 'roadmap'
       });
     // eslint-disable-next-line
-      const markerHOme = new window.google.maps.Marker({
+      const markerHome = new window.google.maps.Marker({
         position: home,
         map: map
       });
@@ -74,10 +72,12 @@ class App extends Component {
           map: map,
           title: myVenue.venue.name 
         })
+        markerVenues.setAnimation(window.google.maps.Animation.DROP);
         markerVenues.addListener('click', function() {
           infowindow.setContent(contentString)
           infowindow.open(map, markerVenues)
         })
+        return true;
       })   
     }
 /*********************************************************/    
@@ -87,7 +87,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <SideBar></SideBar>
+          <SideBar />
         </header>
         <div id="map"></div>
       </div>    
