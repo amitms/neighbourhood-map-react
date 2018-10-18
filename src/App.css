@@ -44,19 +44,61 @@ html, body{
 
 
 
-/***** css for sidebars ****/
+/***** css for SideBar icon, SideBars ****/
+header .title {
+  display: inline;
+}
+header .menuicon {
+  width: 20px;
+  height: 30px;
+  float: left;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+header .menuicon div {
+  width: 30px;
+  height: 4px ;
+  background-color: white;
+  margin: 5px 0; 
+}
 
-  header .menuicon {
-    width: 20px;
-    height: 30px;
-    float: left;
-padding-left: 20px;
-padding-bottom: 20px;
+header .SideBar {
+  height: calc(100% - 60px);
+  width: 200px;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-color: orange;
+  overflow-x: hidden; 
+}
+header .SideBar .form {
+  margin-top: 5px;
+  width: 100%;
+  height: auto; 
+}
+header .SideBar .form .input {
+  padding: 10px 12px;
+  width: 100%;
+  border: 0px;
+  outline: none; 
+  position: left ;
   }
-    header .menuicon div {
-      width: 30px;
-      height: 4px ;
-      background-color: white;
-      margin: 5px 0; }
-
+header .SideBar ul {
+  list-style: none; 
+  }
+header .SideBar ul li {
+  display: flex;
+  -webkit-display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px; 
+}
+header .SideBar ul li a {
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5rem; 
+}
       

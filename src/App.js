@@ -87,20 +87,10 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-            <div>Neighbourhood Map (Columbus, IN)- React -Udacity</div>
-
-                   <SideBar
-
-                    >
-
-                    </SideBar>
-
-
+          <SideBar></SideBar>
         </header>
-
         <div id="map"></div>
       </div>    
-
       )
   }
 }

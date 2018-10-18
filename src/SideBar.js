@@ -2,11 +2,16 @@ import React, {Component} from 'react';
 
 class SideBar extends Component {
 
-  
+    open = () => {
+        const SideBar = document.querySelector('.SideBar');
+        SideBar.style.display === 'none' ? SideBar.style.display = 'block' : SideBar.style.display = 'none';
+    }
     render() {
 
         return (
             <div>
+                <div className="title">Neighbourhood Map (Columbus, IN)- React -Udacity</div>
+
                 <div className="menuicon" onClick={this.open}>
                     <div className="menuiconline"></div>
                     <div className="menuiconline"></div>
@@ -19,8 +24,15 @@ class SideBar extends Component {
                                className="input" role="search"
                                onChange={this.search}/>
                     </div>
-                    
+                    <ul>
+                       <li> testloc1</li>
+                       <li> testloc2</li>
+                       <li> testloc3</li>
+                       <li> testloc4</li>
+
+                    </ul>                    
                 </div>
+
             </div>
         );
     }
