@@ -22,7 +22,6 @@ class SideBar extends Component {
         SideBar.style.display === 'none' ? SideBar.style.display = 'block' : SideBar.style.display = 'none';
      }
     
- 
 
 /*********************************************************/ 
     render() {
