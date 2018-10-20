@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
     mapIsReady: false,
-    venues: []
+    markers: require("./venues.json"), 
+    venues:[]
     };
   }
 
@@ -22,18 +23,18 @@ class App extends Component {
     near: "Columbus IN",
     radius: 200,   
     v: "20182507"
-      }
+      };
 
     axios.get(exploreQuery + new URLSearchParams(parameters))
       .then(response => {
-        console.log(response)
+//        console.log(response)
         this.setState({
         venues: response.data.response.groups[0].items
         })
       })
       .catch(error => {
       console.log("ERROR!! " + error)
-      })    
+      });    
 
 /*********** Google Map API ********************/    
     const ApiKey = 'AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM';  //use AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM or AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
@@ -64,7 +65,7 @@ class App extends Component {
       });
 
 /*********** Info Window for venues markers********************/   
-      var infowindow = new window.google.maps.InfoWindow()
+      var infowindow = new window.google.maps.InfoWindow();
       this.state.venues.map(myVenue => {
         var contentString = `${myVenue.venue.name}${myVenue.venue.location.address}`
         var markerVenues = new window.google.maps.Marker({
@@ -73,23 +74,38 @@ class App extends Component {
           title: myVenue.venue.name 
         })
         markerVenues.setAnimation(window.google.maps.Animation.DROP);
+
         markerVenues.addListener('click', function() {
-          infowindow.setContent(contentString)
-          infowindow.open(map, markerVenues)
+          infowindow.setContent(contentString);
+          infowindow.open(map, markerVenues);
+
         })
+//           this.state.virtualMarkers.push(markerVenues.title);
+
         return true;
-      })   
+      });   
     }
-/*********************************************************/    
-  }
+/*********************************************************/ 
+var venueslist = this.state.venues.map(value => value.venue);
+console.log(venueslist);
+
+/*********************************************************/ 
+  
+}
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <SideBar />
+          <SideBar 
+//            infoWindow={this.state.info}
+//            openInfo={this.markerVenues}
+//            virtualMarker={this.state.virtualMarkers}
+            markers={this.state.markers}
+          />
         </header>
         <div id="map"></div>
+
       </div>    
       )
   }

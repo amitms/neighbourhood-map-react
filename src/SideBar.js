@@ -1,10 +1,27 @@
 import React, {Component} from 'react';
 
 class SideBar extends Component {
+    constructor() {
+        super();
+            this.state = { 
+                info: '',
+                markers: []
+                };
+            }
+
+    componentDidMount() {
+        this.setState({markers: this.props.markers});
+        this.props.markers.map(value => 
+            this.state.markers.push(value.name));
+//        console.log(this.props.virtualMarker);
+//        console.log(this.state.markers);
+    }  
+
     open = () => {
         const SideBar = document.querySelector('.SideBar');
         SideBar.style.display === 'none' ? SideBar.style.display = 'block' : SideBar.style.display = 'none';
-    }
+     }
+
     render() {
 
         return (
@@ -19,11 +36,18 @@ class SideBar extends Component {
                 <div className="SideBar">
                     <div className="form" role="form">
                         <input type="text"
-                           aria-labelledby="filter" placeholder="Search..."
+                           aria-labelledby="filter" placeholder="Search"
                            className="input" role="search"
                            onChange={this.search}/>
                     </div>
-                  
+                    <ul>
+                        {this.props.markers.map((marker) =>
+                            <li key={marker.id}>
+                               {marker.name}
+                            </li>
+                        )}
+
+                    </ul>
                 </div>
 
             </div>

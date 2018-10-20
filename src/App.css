@@ -91,10 +91,11 @@ header .SideBar ul {
   }
 header .SideBar ul li {
   display: flex;
-  -webkit-display: flex;
-  justify-content: center;
+  text-align: left; 
   width: 100%;
-  padding: 10px; 
+  padding: 1px; 
+  margin-inline-start: -1em;
+  font-size: 1rem;
 }
 header .SideBar ul li a {
   text-align: center;
