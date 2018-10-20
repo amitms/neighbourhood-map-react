@@ -4,8 +4,8 @@ class SideBar extends Component {
     constructor() {
         super();
             this.state = { 
-                info: '',
-                markers: []
+                markers: [],
+                searchquery: ''
                 };
             }
 
@@ -22,8 +22,8 @@ class SideBar extends Component {
     }
     
     search = (event) => {
-        const query = event.target.value.trim().toLowerCase();
-
+        var query = event.target.value.trim().toLowerCase();
+        this.setState({searchquery: query});
         if(query.length === 0)
             this.setState({markers: this.props.markers});
         else
@@ -57,7 +57,6 @@ class SideBar extends Component {
                         )}
                     </ul>
                 </div>
-
             </div>
         );
     }

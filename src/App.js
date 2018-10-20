@@ -37,7 +37,7 @@ class App extends Component {
       });    
 
 /*********** Google Map API ********************/    
-    const ApiKey = 'AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM';  //use AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM or AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
+    const ApiKey = 'AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc';  //use AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM or AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
     var index = window.document.getElementsByTagName("script")[0];
     var script = window.document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${ApiKey}&v=3`;
@@ -83,10 +83,9 @@ class App extends Component {
         return true;
       });   
     }
-/*********************************************************/ 
+/*************************for debug purpose********************************/ 
 var venueslist = this.state.venues.map(value => value.venue);
 console.log(venueslist);
-
 /*********************************************************/   
 }
 
@@ -95,9 +94,6 @@ console.log(venueslist);
       <div className="App">
         <header className="App-header">
           <SideBar 
-//            infoWindow={this.state.info}
-//            openInfo={this.markerVenues}
-//            virtualMarker={this.state.virtualMarkers}
             markers={this.state.markers}
           />
         </header>
