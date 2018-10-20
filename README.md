@@ -15,11 +15,11 @@ To test this App in your machine, just follow the steps below:
 ![Jpg](https://github.com/amitms/neighbourhood-map-react/.jpg)
 
 ### Dependencies
-- It is expected as prerequisites to run: 
+It is expected followings as prerequisites to run: 
 1. Node.js
 2. npm or yarn (optional), 
 3. axios [(https://www.npmjs.com/package/axios](https://www.npmjs.com/package/axios) to get started.
 
-###API's used:
-Foursquare API
-Google Maps API
+### API's used:
+1. Foursquare API
+2. Google Maps API
