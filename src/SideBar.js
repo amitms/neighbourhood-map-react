@@ -14,7 +14,6 @@ class SideBar extends Component {
         this.setState({markers: this.props.markers});
         this.props.markers.map(value => 
             this.state.markers.push(value.name));
-//        console.log(this.props.virtualMarker);
 //        console.log(this.state.markers);
     }  
 
@@ -23,6 +22,7 @@ class SideBar extends Component {
         SideBar.style.display === 'none' ? SideBar.style.display = 'block' : SideBar.style.display = 'none';
      }
     
+
 
 
 /*********************************************************/ 

@@ -7,9 +7,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    mapIsReady: false,
-    markers: require("./venues.json"), 
-    venues:[]
+      mapIsReady: false,
+      markers: require("./venues.json"), 
+      venues:[]
     };
   }
 
@@ -80,8 +80,6 @@ class App extends Component {
           infowindow.open(map, markerVenues);
 
         })
-//           this.state.virtualMarkers.push(markerVenues.title);
-
         return true;
       });   
     }
