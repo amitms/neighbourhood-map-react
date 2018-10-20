@@ -5,7 +5,6 @@ class SideBar extends Component {
         super();
             this.state = { 
                 info: '',
-                query: '',
                 markers: []
                 };
             }
@@ -20,9 +19,17 @@ class SideBar extends Component {
     open = () => {
         const SideBar = document.querySelector('.SideBar');
         SideBar.style.display === 'none' ? SideBar.style.display = 'block' : SideBar.style.display = 'none';
-     }
+    }
     
+    search = (event) => {
+        const query = event.target.value.trim().toLowerCase();
 
+        if(query.length === 0)
+            this.setState({markers: this.props.markers});
+        else
+            this.setState({markers: this.props.markers.filter(p => 
+                p.name.toLowerCase().includes(query))});
+    }
 /*********************************************************/ 
     render() {
 
