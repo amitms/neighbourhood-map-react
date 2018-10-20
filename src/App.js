@@ -48,7 +48,7 @@ class App extends Component {
     });
     index.parentNode.insertBefore(script, index);
   }
-
+/*********************************************************/ 
   componentDidUpdate() {
     const home = {lat: 39.2029072, lng: -85.9235928};
 
@@ -89,8 +89,7 @@ class App extends Component {
 var venueslist = this.state.venues.map(value => value.venue);
 console.log(venueslist);
 
-/*********************************************************/ 
-  
+/*********************************************************/   
 }
 
   render() {

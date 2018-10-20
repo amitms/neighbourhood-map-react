@@ -5,6 +5,7 @@ class SideBar extends Component {
         super();
             this.state = { 
                 info: '',
+                query: '',
                 markers: []
                 };
             }
@@ -21,7 +22,10 @@ class SideBar extends Component {
         const SideBar = document.querySelector('.SideBar');
         SideBar.style.display === 'none' ? SideBar.style.display = 'block' : SideBar.style.display = 'none';
      }
+    
 
+
+/*********************************************************/ 
     render() {
 
         return (
@@ -41,7 +45,7 @@ class SideBar extends Component {
                            onChange={this.search}/>
                     </div>
                     <ul>
-                        {this.props.markers.map((marker) =>
+                        {this.state.markers.map((marker) =>
                             <li key={marker.id}>
                                {marker.name}
                             </li>
