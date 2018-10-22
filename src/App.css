@@ -66,7 +66,7 @@ header .menuicon div {
 header .SideBar {
   height: calc(100% - 60px);
   width: 200px;
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1;
   bottom: 0;
