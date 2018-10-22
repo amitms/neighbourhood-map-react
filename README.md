@@ -12,7 +12,7 @@ To test this App in your machine, just follow the steps below:
 - The app will launch in your browser at the address[http://localhost:3000/](http://localhost:3000/).
 
 ### Project snapshot
-![link](https://amitms.github.io/neighbourhood-map-react/) demo
+[demo site](https://amitms.github.io/neighbourhood-map-react/) 
 ![preview](https://github.com/amitms/neighbourhood-map-react/blob/master/Capture.JPG)
 
 ### Dependencies
