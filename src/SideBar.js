@@ -32,13 +32,14 @@ class SideBar extends Component {
             this.setState({markers: this.props.markers.filter(p => 
                 p.name.toLowerCase().includes(query))});
             this.setState({newmarkers: this.state.markers});
-//            console.log(this.state.newmarkers);
+
 /*********************************************************/ 
     this.infoWindow();
     }
 /*********** Rerender markers and Info Window ********************/   
     infoWindow = () => {
-        this.setState({newmarkers: this.state.markers});
+
+            console.log(this.state.newmarkers);
 
         const home = {lat: 39.2029072, lng: -85.9235928};    
         var map = new window.google.maps.Map(document.getElementById('map'), {
@@ -59,35 +60,36 @@ class SideBar extends Component {
             infowindow.setContent(contentString);
             infowindow.open(map, markerVenues);
 
-            console.log(this.state.newmarkers);
 
             return true;
         });  
     }
 /*********************************************************/ 
+    
+ 
     render() {
 
         return (
             <div>
-                <div className="title">Neighbourhood Map (Columbus, IN)- React -Udacity</div>
+                <aside><div className="title" role="banner">Neighbourhood Map (Columbus, IN)- React -Udacity</div></aside>
 
-                <div className="menuicon" onClick={this.open}>
+                <div className="menuicon" onClick={this.open} tabIndex = "0">
                     <div className="menuiconline"></div>
                     <div className="menuiconline"></div>
                     <div className="menuiconline"></div>
                 </div>
-                <div className="SideBar">
-                    <div className="form" role="form">
+                <div className="SideBar" role="navigation" >
+                    <div className="form" role="form" tabIndex = "0">
                         <input type="text"
-                           aria-labelledby="filter" placeholder="Search"
+                           aria-labelledby="filter" placeholder="Search" tabIndex = "0"
                            className="input" role="search"
                            onChange={this.search}/>
                     </div>
                     <ul>
                         {this.state.markers.map((marker) =>
-                            <li key={marker.id} onKeyPress={this.infoWindow} 
-                                                onClick={this.infoWindow} 
-                                                tabIndex="0" role="button">
+                            <li key={marker.id} onKeyPress = {this.infoWindow} 
+                                                onClick = {this.infoWindow}                                
+                                                tabIndex = "0" role="button">
                                    {marker.name}
                             </li>
                         )}
