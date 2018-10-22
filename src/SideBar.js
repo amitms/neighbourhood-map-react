@@ -38,6 +38,8 @@ class SideBar extends Component {
     }
 /*********** Rerender markers and Info Window ********************/   
     infoWindow = () => {
+        this.setState({newmarkers: this.state.markers});
+
         const home = {lat: 39.2029072, lng: -85.9235928};    
         var map = new window.google.maps.Map(document.getElementById('map'), {
             center: home,          
@@ -83,7 +85,9 @@ class SideBar extends Component {
                     </div>
                     <ul>
                         {this.state.markers.map((marker) =>
-                            <li key={marker.id} onKeyPress={this.infoWindow} onClick={this.infoWindow} tabIndex="0" role="button">
+                            <li key={marker.id} onKeyPress={this.infoWindow} 
+                                                onClick={this.infoWindow} 
+                                                tabIndex="0" role="button">
                                    {marker.name}
                             </li>
                         )}
