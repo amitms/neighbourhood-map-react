@@ -33,7 +33,8 @@ class App extends Component {
         })
       })
       .catch(error => {
-      console.log("ERROR!! " + error)
+//      console.log("ERROR!! " + error)
+      alert("ERROR!! " + error)
       });    
 
 /*********** Google Map API ********************/    
@@ -62,7 +63,7 @@ class App extends Component {
       const markerHome = new window.google.maps.Marker({
         position: home,
         map: map,
-        title: home
+        title: 'home'
       });
 /*********** Info Window for venues markers********************/   
       var infowindow = new window.google.maps.InfoWindow();

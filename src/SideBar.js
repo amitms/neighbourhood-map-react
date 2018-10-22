@@ -12,6 +12,7 @@ class SideBar extends Component {
 
     componentDidMount() {
         this.setState({markers: this.props.markers});
+        this.setState({newmarkers: this.props.markers});
         this.props.markers.map(value => 
             this.state.markers.push(value.name));
 //        console.log(this.state.markers);
@@ -31,10 +32,12 @@ class SideBar extends Component {
             this.setState({markers: this.props.markers.filter(p => 
                 p.name.toLowerCase().includes(query))});
             this.setState({newmarkers: this.state.markers});
-
-            console.log(this.state.newmarkers);
-
+//            console.log(this.state.newmarkers);
+/*********************************************************/ 
+    this.infoWindow();
+    }
 /*********** Rerender markers and Info Window ********************/   
+    infoWindow = () => {
         const home = {lat: 39.2029072, lng: -85.9235928};    
         var map = new window.google.maps.Map(document.getElementById('map'), {
             center: home,          
@@ -53,9 +56,11 @@ class SideBar extends Component {
             markerVenues.setAnimation(window.google.maps.Animation.DROP);
             infowindow.setContent(contentString);
             infowindow.open(map, markerVenues);
+
+            console.log(this.state.newmarkers);
+
             return true;
         });  
-
     }
 /*********************************************************/ 
     render() {
@@ -78,8 +83,8 @@ class SideBar extends Component {
                     </div>
                     <ul>
                         {this.state.markers.map((marker) =>
-                            <li key={marker.id}>
-                               {marker.name}
+                            <li key={marker.id} onKeyPress={this.infoWindow} onClick={this.infoWindow} tabIndex="0" role="button">
+                                   {marker.name}
                             </li>
                         )}
                     </ul>
@@ -90,3 +95,4 @@ class SideBar extends Component {
 }
 
 export default SideBar;
+    
