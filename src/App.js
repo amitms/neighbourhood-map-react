@@ -37,7 +37,7 @@ class App extends Component {
       });    
 
 /*********** Google Map API ********************/    
-    const ApiKey = 'AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc';  //use AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM or AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
+    const ApiKey = 'AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM';  //use AIzaSyBrRQlBPiy6icvdiqbmIrj0DQ1RuI1FKEM or AIzaSyAD4vpwyw4zFgzo_4_RG4lAaVwCIVZM9Jc (full) 
     var index = window.document.getElementsByTagName("script")[0];
     var script = window.document.createElement("script");
     script.src = `https://maps.googleapis.com/maps/api/js?key=${ApiKey}&v=3`;
@@ -61,13 +61,15 @@ class App extends Component {
     // eslint-disable-next-line
       const markerHome = new window.google.maps.Marker({
         position: home,
-        map: map
+        map: map,
+        title: home
       });
-
 /*********** Info Window for venues markers********************/   
       var infowindow = new window.google.maps.InfoWindow();
+      infowindow.setContent('Home');
+      infowindow.open(map, markerHome);
       this.state.venues.map(myVenue => {
-        var contentString = `${myVenue.venue.name}${myVenue.venue.location.address}`
+        var contentString = `${myVenue.venue.name}, ${myVenue.venue.location.address}`
         var markerVenues = new window.google.maps.Marker({
           position: {lat: myVenue.venue.location.lat , lng: myVenue.venue.location.lng},
           map: map,
@@ -84,8 +86,8 @@ class App extends Component {
       });   
     }
 /*************************for debug purpose********************************/ 
-var venueslist = this.state.venues.map(value => value.venue);
-console.log(venueslist);
+//var venueslist = this.state.venues.map(value => value.venue);
+//console.log(venueslist);
 /*********************************************************/   
 }
 

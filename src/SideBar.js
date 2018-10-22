@@ -5,7 +5,8 @@ class SideBar extends Component {
         super();
             this.state = { 
                 markers: [],
-                searchquery: ''
+                searchquery: '',
+                newmarkers:[]
                 };
             }
 
@@ -29,6 +30,32 @@ class SideBar extends Component {
         else
             this.setState({markers: this.props.markers.filter(p => 
                 p.name.toLowerCase().includes(query))});
+            this.setState({newmarkers: this.state.markers});
+
+            console.log(this.state.newmarkers);
+
+/*********** Rerender markers and Info Window ********************/   
+        const home = {lat: 39.2029072, lng: -85.9235928};    
+        var map = new window.google.maps.Map(document.getElementById('map'), {
+            center: home,          
+            zoom: 17,
+            mapTypeId: 'roadmap'
+        });
+
+        var infowindow = new window.google.maps.InfoWindow();
+        this.state.newmarkers.map(myVenue => {
+            var contentString = `${myVenue.name}, ${myVenue.location}`
+            var markerVenues = new window.google.maps.Marker({
+              position: {lat: myVenue.latitude , lng: myVenue.longitude},
+              map: map,
+              title: myVenue.name 
+            })
+            markerVenues.setAnimation(window.google.maps.Animation.DROP);
+            infowindow.setContent(contentString);
+            infowindow.open(map, markerVenues);
+            return true;
+        });  
+
     }
 /*********************************************************/ 
     render() {
